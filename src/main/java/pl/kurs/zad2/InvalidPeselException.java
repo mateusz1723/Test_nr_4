@@ -1,4 +1,4 @@
-package zad2;
+package pl.kurs.zad2;
 
 public class InvalidPeselException extends Exception{
     public InvalidPeselException(String message) {
