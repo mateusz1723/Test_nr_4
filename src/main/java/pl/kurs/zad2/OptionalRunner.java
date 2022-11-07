@@ -32,16 +32,15 @@ public class OptionalRunner {
     private static String getYear(String pesel) {
         String date = pesel.substring(0, 2) + "-" + pesel.substring(2, 4) + "-" + pesel.substring(4, 6);
 
-        if (pesel.charAt(2) == '8' || pesel.charAt(2) == '9')
-            return "Urodziles sie w: 18" + date;
-        if (pesel.charAt(2) == '0' || pesel.charAt(2) == '1')
-            return "Urodziles sie w: 19" + date;
-        if (pesel.charAt(2) == '2' || pesel.charAt(2) == '3')
-            return "Urodziles sie w: 20" + date;
-        if (pesel.charAt(2) == '4' || pesel.charAt(2) == '5')
-            return "Urodziles sie w: 21" + date;
-        if (pesel.charAt(2) == '6' || pesel.charAt(2) == '7')
-            return "Urodziles sie w: 22" + date;
-        else return "";
+        char month = pesel.charAt(2);
+        return switch (month) {
+            case '0', '1' -> "Urodziles sie w: 19" + date;
+            case '2', '3' -> "Urodziles sie w: 20" + date;
+            case '4', '5' -> "Urodziles sie w: 21" + date;
+            case '6', '7' -> "Urodziles sie w: 22" + date;
+            case '8', '9' -> "Urodziels sie w: 18" + date;
+            default -> null;
+        };
+
     }
 }
